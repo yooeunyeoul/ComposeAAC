@@ -6,10 +6,7 @@ import com.dongeul.composeaac.feature_note.data.data_source.NoteDao
 import com.dongeul.composeaac.feature_note.data.data_source.NoteDatabase
 import com.dongeul.composeaac.feature_note.data.repository.NoteRepositoryImpl
 import com.dongeul.composeaac.feature_note.domain.repository.NoteRepository
-import com.dongeul.composeaac.feature_note.domain.user_case.AddNote
-import com.dongeul.composeaac.feature_note.domain.user_case.DeleteNote
-import com.dongeul.composeaac.feature_note.domain.user_case.GetNotesUseCase
-import com.dongeul.composeaac.feature_note.domain.user_case.NoteUseCases
+import com.dongeul.composeaac.feature_note.domain.user_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,7 +38,8 @@ object AppModule {
         return NoteUseCases(
             getNotesUseCase = GetNotesUseCase(repository),
             deleteNote = DeleteNote(repository),
-            addNote = AddNote(repository)
+            addNote = AddNote(repository),
+            getNote = GetNote(repository)
         )
     }
 }
